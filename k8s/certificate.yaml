@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: shastakouski-com-tls
+spec:
+  secretName: shastakouski-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: shastakouski.com
+  dnsNames:
+    - shastakouski.com
+    - www.shastakouski.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - shastakouski.com
+          - www.shastakouski.com 
+          
